@@ -14,7 +14,7 @@ Below are steps to sending keycloak's event logging to graylog:
 
 4.  Add below line under <subsystem xmlns="urn:jboss:domain:logging>. Adjust the value for serverHostname, port, and protocol. In example below, we are using TCP as the syslog protocol. Usually the default for syslog is using UDP.
 
-   
+   ```xml
    <custom-handler name="graylog" class="org.jboss.logmanager.handlers.SyslogHandler" module="org.jboss.logmanager">
                    <level name="DEBUG"/>
                    <formatter>
@@ -35,6 +35,7 @@ Below are steps to sending keycloak's event logging to graylog:
                        <handler name="graylog"/>
                    </handlers>
                </logger>
+   ```
 
 5. Start keycloak and check logging.properties under standalone's configuration folder($KEYCLOAK_HOME/standalone/configuration/logging.properties), the configuration should now contain handler with name graylog
 
